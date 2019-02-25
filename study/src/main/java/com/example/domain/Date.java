@@ -2,7 +2,7 @@ package com.example.domain;
 
 public class Date {
 	
-     private int dateId;
+     private String dateId;
      
      private String dateName;
      
@@ -12,11 +12,11 @@ public class Date {
      
      private int adjustmentDay;
 
-	public int getDateId() {
+	public String getDateId() {
 		return dateId;
 	}
 
-	public void setDateId(int dateId) {
+	public void setDateId(String dateId) {
 		this.dateId = dateId;
 	}
 
