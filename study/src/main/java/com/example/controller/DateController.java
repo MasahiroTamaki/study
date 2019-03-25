@@ -27,14 +27,14 @@ public class DateController {
 		return "dates/index";
 	}
 	
-	@GetMapping("/new")
-	public String newDate() {
+	@GetMapping("new")
+	public String newDate(Model model) {
 		return "dates/new";
 	}
 	
 	@GetMapping("edit/{dateId}")
 	public String edit(@PathVariable String dateId, Model model) {
-		model.addAttribute("datemaster",dateService.search(dateId));
+		model.addAttribute("date",dateService.search(dateId));
 		return "dates/edit";
 	}
 

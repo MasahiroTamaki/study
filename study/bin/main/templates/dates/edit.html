@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>edit</title>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+      <h1>編集</h1>
+      <form th:action="@{/dates/{dateId}(dateId=*{dateId})}" th:method="put" th:object="${date}">
+        <div class="form-group">
+          <label class="control-label">日付ID</label>
+          <input class="form-control" type="text" th:field="*{dateId}" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">日付名</label>
+          <input class="form-control" type="text" th:field="*{dateName}" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">年</label>
+          <input class="form-control" type="number" th:field="*{adjustmentYear}" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">月</label>
+          <input class="form-control" type="number" th:field="*{adjustmentMonth}" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">日</label>
+          <input class="form-control" type="number" th:field="*{adjustmentDay}" />
+        </div>
+        <button class="btn btn-default" type="submit">更新</button>
+      </form>
+      <div class="pull-right">
+        <a class="btn btn-link" href="/dates">一覧画面へ</a>
+      </div>
+    </div>
+</body>
+</html>

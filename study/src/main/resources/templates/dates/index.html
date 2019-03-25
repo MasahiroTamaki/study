@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>demo</title>
+<title>dates</title>
 <link rel="stylesheet" href="/css/bootstrap.css" />
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
@@ -26,8 +26,8 @@
     </div>       
     
 	<ul class="nav nav-pills">
-	 <li role="presentation"><a href="/date/list">一覧</a></li>
-	 <li role="presentation"><a href="/date/new">新規作成</a></li>
+	 <li role="presentation"><a th:href="@{/dates}">一覧</a></li>
+	 <li role="presentation"><a th:href="@{/dates/new}">新規作成</a></li>
 	</ul> 
 	<table class="table">
 	<thead>
@@ -37,7 +37,7 @@
 	　　　　<th>年</th>
 	　　　　<th>月</th>
 	　　　　<th>日</th>
-        　　　　 <th></th>
+        　　　　 <th>計算結果</th>
        　　　　  <th></th>	
        　　　　  <th></th>		   
 	　　</tr>
@@ -49,10 +49,9 @@
 	  <td th:text="*{adjustmentYear}"></td>
 	  <td th:text="*{adjustmentMonth}"></td>
 	  <td th:text="*{adjustmentDay}"></td>
-	  <td><a class="btn btn-default btn-xs" th:href="@{/date/{id}(id=*{dateId})}">参照</a></td>
-	  <td><a class="btn btn-default btn-xs" th:href="@{/date/{id}/edit(id=*{dateId})}">編集</a></td>
+	  <td><a class="btn btn-default btn-xs" th:href="@{/dates/edit/{dateId}(dateId=*{dateId})}">編集</a></td>
 	   <td>
-              <form th:action="@{/date/{id}(id=*{dateId})}" th:method="delete">
+              <form th:action="@{/dates/{dateId}(dateId=*{dateId})}" th:method="delete">
                 <input class="btn btn-default btn-xs" type="submit" value="削除" />
               </form>
             </td>

@@ -19,10 +19,10 @@ public interface DateMapper {
 	@Select("select * from datemaster where dateId = #{dateId}")
 	Date selectPK(String dateId);
 
-	@Insert("insert into datemaster (dateId, dateName, ajustmentYear, ajustmentMonth, ajustmentDay) values (#{dateId}, #{dateName}, #{ajustmentYear}, #{ajustmentMonth}, #{ajustmentDay})")
+	@Insert("insert into datemaster (dateId, dateName, adjustmentYear, adjustmentMonth, adjustmentDay) values (#{dateId}, #{dateName}, #{adjustmentYear}, #{adjustmentMonth}, #{adjustmentDay})")
 	void save(Date date);
 
-	@Update("update datemaster set dateId = #{dateId}, dateName = #{dateName}, ajustmentYear = #{ajustmentYear}, ajustmentMonth = #{ajustmentYear}, ajustmentDay = #{ajustmentYear}")
+	@Update("update datemaster set dateId = #{dateId}, dateName = #{dateName}, adjustmentYear = #{adjustmentYear}, adjustmentMonth = #{adjustmentMonth}, adjustmentDay = #{adjustmentDay} where dateId = #{dateId}")
 	void update(Date date);
 
 	@Delete("delete from datemaster where dateId = #{dateId}")
