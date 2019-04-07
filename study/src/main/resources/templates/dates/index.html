@@ -14,9 +14,9 @@
 	
 	<div class="row">
       <div class="col-md-6">
-        <form action="modelAttribute" th:action="modelAttribute" method="post">
+        <form action="/dates/culculate" th:action="@{/dates/culculate}" method="post">
           <div class="input-group">
-	        <input type="text" name="fdate" class="form-control" maxlength="8" placeholder="yyyyMMdd"/>
+	        <input type="text" name="baseDate" class="form-control" maxlength="8" placeholder="yyyyMMdd"/>
             <span class="input-group-btn">
               <input class="btn btn-default" type="submit" value="計算" />
             </span>
@@ -32,6 +32,7 @@
 	<table class="table">
 	<thead>
 	　　<tr>
+	　　　　<th>No.</th>
 	　　　　<th>日付ID</th>
 	　　　　<th>日付名</th>
 	　　　　<th>年</th>
@@ -43,12 +44,14 @@
 	　　</tr>
 	</thead>
 	<tbody>
-	<tr th:each="datemaster: ${dates}" th:object="${datemaster}">
+	<tr th:each="datemaster, stat: ${dates}" th:object="${datemaster}">
+	  <td th:text="${stat.count}"></td>
 	  <td th:text="*{dateId}"></td>
 	  <td th:text="*{dateName}"></td>
 	  <td th:text="*{adjustmentYear}"></td>
 	  <td th:text="*{adjustmentMonth}"></td>
 	  <td th:text="*{adjustmentDay}"></td>
+	  <td th:text="*{calculatedDate}"></td>
 	  <td><a class="btn btn-default btn-xs" th:href="@{/dates/edit/{dateId}(dateId=*{dateId})}">編集</a></td>
 	   <td>
               <form th:action="@{/dates/{dateId}(dateId=*{dateId})}" th:method="delete">

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +58,12 @@ public class DateController {
 		return "redirect:/dates"; 
 	}
 	
+	@PostMapping("culculate")
+	public String culculate(@ModelAttribute("baseDate") String baseDate,Model model) {
+		model.addAttribute("resultDate",dateService.calculation(baseDate));
+		model.addAttribute("baseDate",baseDate);
+        return "dates/index";
+	}
 	
 }
 

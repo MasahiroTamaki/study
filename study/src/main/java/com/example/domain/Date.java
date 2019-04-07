@@ -1,5 +1,6 @@
 package com.example.domain;
 
+
 public class Date {
 	
      private String dateId;
@@ -12,7 +13,9 @@ public class Date {
      
      private int adjustmentDay;
      
+     private String calculatedDate;
      
+	
 
 	public String getDateId() {
 		return dateId;
@@ -54,5 +57,12 @@ public class Date {
 		this.adjustmentDay = adjustmentDay;
 	}
     	
-      
+	public String getCalculatedDate() {
+		return calculatedDate;
+	}
+
+	public void setCalculatedDate(String calculatedDate) {
+		this.calculatedDate = calculatedDate;
+	}
+
 }
