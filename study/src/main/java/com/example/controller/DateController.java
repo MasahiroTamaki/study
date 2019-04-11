@@ -59,8 +59,8 @@ public class DateController {
 	}
 	
 	@PostMapping("culculate")
-	public String culculate(@ModelAttribute("baseDate") String baseDate,Model model) {
-		model.addAttribute("resultDate",dateService.calculation(baseDate));
+	public String culculate(@ModelAttribute("baseDate") String baseDate,@ModelAttribute Date date,Model model) {
+		model.addAttribute("dates",dateService.calculation(baseDate,date));
 		model.addAttribute("baseDate",baseDate);
         return "dates/index";
 	}
