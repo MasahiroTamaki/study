@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Date {
 	
@@ -15,8 +17,17 @@ public class Date {
      
      private String calculatedDate;
      
-	
+     public Date(){
+    	 
+     }
 
+     public Date DateConversion(String baseDate) {
+ 		LocalDate fmt= LocalDate.parse(baseDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
+ 		LocalDate result =fmt.plusYears(adjustmentYear).plusMonths(adjustmentMonth).plusDays(adjustmentDay);
+ 			this.calculatedDate = result.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+ 			return this;
+ 	}
+     
 	public String getDateId() {
 		return dateId;
 	}
@@ -56,7 +67,7 @@ public class Date {
 	public void setAdjustmentDay(int adjustmentDay) {
 		this.adjustmentDay = adjustmentDay;
 	}
-    	
+
 	public String getCalculatedDate() {
 		return calculatedDate;
 	}
@@ -64,5 +75,6 @@ public class Date {
 	public void setCalculatedDate(String calculatedDate) {
 		this.calculatedDate = calculatedDate;
 	}
+
 
 }

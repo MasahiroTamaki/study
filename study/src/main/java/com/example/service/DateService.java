@@ -1,7 +1,6 @@
 package com.example.service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +41,10 @@ public class DateService {
 		dateMapper.deletePK(dateId);
 	}
 
-	public String calculation(String baseDate, Date date) {
-		LocalDate fmt= LocalDate.parse(baseDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
-		LocalDate calculatedDate =fmt.plusYears(date.getAdjustmentYear()).plusMonths(date.getAdjustmentMonth()).plusDays(date.getAdjustmentDay());
-			return calculatedDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-	}
+	public List<Date> calculation(String baseDate){
+		List<Date> dateFormulae = dateMapper.select();
+		List<Date> dates = new ArrayList<>();
+		dateFormulae.stream().forEach(d -> dates.add(d.DateConversion(baseDate)));
+		return dates;
+	}	
 }

@@ -1,6 +1,9 @@
 package com.example.controller;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +24,13 @@ public class DateController {
 	
 	@Autowired
 	private DateService dateService;
-	
-	@GetMapping
-	public String index (Model model) {
-		model.addAttribute("dates",dateService.search());
+
+	@RequestMapping
+	public String index(Model model) {	
+		LocalDate localDate = LocalDate.now();
+		String baseDate = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		model.addAttribute("dates",dateService.calculation(baseDate));
+		model.addAttribute("baseDate",baseDate);
 		return "dates/index";
 	}
 	
@@ -59,10 +65,10 @@ public class DateController {
 	}
 	
 	@PostMapping("culculate")
-	public String culculate(@ModelAttribute("baseDate") String baseDate,@ModelAttribute Date date,Model model) {
-		model.addAttribute("dates",dateService.calculation(baseDate,date));
+	public String index(@ModelAttribute("baseDate") String baseDate,Model model) {
+		model.addAttribute("dates",dateService.calculation(baseDate));
 		model.addAttribute("baseDate",baseDate);
-        return "dates/index";
+		return "dates/index";	
 	}
 	
 }
